@@ -32,10 +32,20 @@ scores_df = pd.read_parquet(BASE_DIR / "hotspot_scores_v2.parquet")
 clustered_df = pd.read_parquet(BASE_DIR / "clustered.parquet")
 clustered_df = clustered_df[clustered_df["cluster_id"] != -1]
 
+
+
+
 events_df = pd.read_csv(
     BASE_DIR / "data" / "Astram_event_data_anonymized_-_Astram_event_data_anonymizedb40ac87.csv",
     low_memory=False,
 )
+congestion_events = events_df[
+    events_df["event_cause"].isin(["congestion", "road_conditions"])
+].dropna(subset=["latitude", "longitude"])
+
+congestion_events = congestion_events[
+    congestion_events["latitude"] != 0
+]
 
 def haversine(lat1, lon1, lat2, lon2):
     R = 6371.0
