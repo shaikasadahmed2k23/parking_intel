@@ -31,6 +31,10 @@ Instead of relying on reactive patrols, authorities can use data-driven insights
 
 ---
 
+![Dashboard Overview](screenshots/dashboard-overview.png)
+
+---
+
 ## Table of Contents
 
 - [The Problem](#the-problem)
