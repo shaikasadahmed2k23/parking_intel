@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+
+# Virtual Environment
+venv/
+backend/venv/
+.env
+
+# Parquet / Large Data Files
+# Ignored by default, EXCEPT the two files the backend actually loads at
+# runtime (clustered.parquet, hotspot_scores_v2.parquet) - those are kept
+# so the app works out of the box after a fresh clone.
+*.parquet
+!clustered.parquet
+!hotspot_scores_v2.parquet
+
+# Raw source CSVs (large, from the hackathon dataset - not redistributed)
+data/jan_to_may_police_violation_anonymized791b166.csv
+
+# Node.js
+node_modules/
+frontend/node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Logs
+*.log
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Cache
+.cache/
+.pytest_cache/
