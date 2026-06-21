@@ -6,7 +6,8 @@ import {
 } from 'recharts';
 import './index.css';
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+// const API = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+const API = import.meta.env.VITE_API_URL ?? "http://localhost:8000/api";
 
 function severityColor(score) {
   if (score >= 0.5) return '#EF4444';

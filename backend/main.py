@@ -338,3 +338,11 @@ def violations_sample(n: int = Query(2000, le=20000)):
     """Lightweight sampled raw points for heatmap rendering (avoids sending all 298k points)."""
     sample = clustered_df.sample(min(n, len(clustered_df)), random_state=42)
     return sample[["latitude", "longitude", "police_station", "hour"]].to_dict(orient="records")
+
+
+@app.get("/")
+def root():
+    return {
+        "message": "Parking Intelligence API",
+        "status": "running"
+    }
