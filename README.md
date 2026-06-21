@@ -1,14 +1,30 @@
-# Parking Violation Intelligence & Enforcement Prioritization System
+# 🚦 Parking Violation Intelligence & Enforcement Prioritization System
 
-**Flipkart 2.0 Hackathon — Round 2**
+Secure. Intelligent. Actionable. An AI-powered parking intelligence platform that detects illegal parking hotspots, quantifies their traffic impact, validates findings against real-world congestion events, and recommends targeted enforcement strategies — built for the Flipkart 2.0 Hackathon.
+
+![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge)
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge)
+![React](https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge)
+![Vite](https://img.shields.io/badge/Vite-Build_Tool-646CFF?style=for-the-badge)
+![Leaflet](https://img.shields.io/badge/Leaflet-Mapping-199900?style=for-the-badge)
+![Pandas](https://img.shields.io/badge/Pandas-Data_Processing-150458?style=for-the-badge)
+![Scikit--Learn](https://img.shields.io/badge/Scikit--Learn-ML-F7931E?style=for-the-badge)
+![DBSCAN](https://img.shields.io/badge/DBSCAN-Spatial_Clustering-red?style=for-the-badge)
+![Parquet](https://img.shields.io/badge/Parquet-Analytics-purple?style=for-the-badge)
+![MIT License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+### 🏆 Flipkart 2.0 Hackathon — Round 2
 **Theme:** Poor Visibility on Parking-Induced Congestion
 
-AI-driven parking intelligence that detects illegal parking hotspots, quantifies
-their impact on traffic flow, validates that impact against real-world ground
-truth, and recommends targeted enforcement windows — turning a raw 5-month
-violation dataset into an actionable, ranked enforcement plan.
+🌐 **Live Dashboard:** [Add Deployment Link Here]
 
-![Dashboard Overview](screenshots/dashboard-overview.png)
+---
+
+## 📌 About the Project
+
+Parking violations are more than isolated incidents—they are often indicators of larger traffic bottlenecks. This project transforms over **298,000 parking violation records** into an intelligent enforcement-planning system that identifies congestion-prone hotspots, measures their likely impact on traffic flow, validates predictions against real-world congestion reports, and generates prioritized enforcement recommendations.
+
+Instead of relying on reactive patrols, authorities can use data-driven insights to deploy enforcement resources where they will have the greatest impact on reducing congestion.
 
 > For step-by-step installation, see [SETUP.md](SETUP.md).
 > For the full methodology and pitch writeup, see [CONCEPT_NOTE.md](CONCEPT_NOTE.md).
@@ -88,20 +104,15 @@ processed data into something an enforcement planner can actually act on:
 ## Architecture
 
 ```
-┌──────────────────────┐      ┌───────────────────────┐      ┌──────────────────────┐
-│   Data Pipeline       │      │   FastAPI Backend      │      │   React Dashboard     │
-│   (offline, Python)   │ ───> │   (serves processed    │ ───> │   (Traffic Ops        │
-│                        │      │    data via REST)      │      │    Console)           │
-│ - Clean & parse        │      │                        │      │                       │
-│ - DBSCAN clustering    │      │ /api/hotspots          │      │ - Live hotspot map    │
-│ - Severity scoring     │      │ /api/hotspots/{id}     │      │ - Priority ranking    │
-│ - Congestion-impact    │      │ /api/hotspots/rank-    │      │ - Zone drill-down     │
-│   proxy                │      │   comparison           │      │ - Hourly pattern      │
-│ - Ground-truth         │      │ /api/stats/*           │      │ - Validation proof    │
-│   validation           │      │ /api/validation/*      │      │ - Congestion overlay  │
-│ - Pareto efficiency    │      │ /api/enforcement/*     │      │ - Patrol schedule     │
-│   analysis              │      │ /api/events/congestion │      │ - Pareto stat         │
-└──────────────────────┘      └───────────────────────┘      └──────────────────────┘
+┌──────────────────┐      ┌──────────────────┐      ┌──────────────────┐
+│  Data Pipeline   │ ───▶│ FastAPI Backend   │ ───▶│ React Dashboard  │
+├──────────────────┤      ├──────────────────┤      ├──────────────────┤
+│ Data Cleaning    │      │ Hotspots API     │      │ Interactive Map  │
+│ DBSCAN Clusters  │      │ Validation API   │      │ Rankings         │
+│ Severity Scores  │      │ Statistics API   │      │ Zone Analytics   │
+│ Validation       │      │ Enforcement API  │      │ Validation View  │
+│ Pareto Analysis  │      │ Congestion API   │      │ Patrol Planner   │
+└──────────────────┘      └──────────────────┘      └──────────────────┘
 ```
 
 **Stack:** Python (pandas, scikit-learn) for the pipeline · FastAPI for the
