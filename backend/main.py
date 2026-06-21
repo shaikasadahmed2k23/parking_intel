@@ -14,7 +14,9 @@ import numpy as np
 import json
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
 
 app = FastAPI(title="Parking Violation Intelligence API")
 
@@ -34,11 +36,6 @@ events_df = pd.read_csv(
     BASE_DIR / "data" / "Astram_event_data_anonymized_-_Astram_event_data_anonymizedb40ac87.csv",
     low_memory=False,
 )
-congestion_events = events_df[
-    events_df["event_cause"].isin(["congestion", "road_conditions"])
-].dropna(subset=["latitude", "longitude"])
-congestion_events = congestion_events[congestion_events["latitude"] != 0]
-
 
 def haversine(lat1, lon1, lat2, lon2):
     R = 6371.0
