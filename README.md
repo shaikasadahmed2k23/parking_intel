@@ -16,7 +16,7 @@ Secure. Intelligent. Actionable. An AI-powered parking intelligence platform tha
 ### 🏆 Flipkart 2.0 Hackathon — Round 2
 **Theme:** Poor Visibility on Parking-Induced Congestion
 
-🌐 **Live Dashboard:** [Add Deployment Link Here]
+🌐 **Live Dashboard:** [https://parking-intel-teal.vercel.app/]
 
 ---
 
